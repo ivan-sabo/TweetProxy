@@ -70,3 +70,11 @@ Enjoy!
 [11]: https://symfony.com/doc/3.3/logging.html
 [13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
 [14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+
+
+// installation
+
+set db connection settings in config/parameters.yml
+
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force

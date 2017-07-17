@@ -25,7 +25,7 @@ class User
     /**
      * @ORM\Column(type="string")
      */
-    private $screen_name;
+    private $screenName;
 
     /**
      * @ORM\Column(type="string")
@@ -60,6 +60,16 @@ class User
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getScreenName()
+    {
+        return $this->screenName;
+    }
+
+    public function setScreenName($screen)
+    {
+        $this->screenName = $screen;
     }
 
     public function getLocation()

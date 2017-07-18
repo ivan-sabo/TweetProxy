@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tweet
 {
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @ORM\Id
      */
     private $id;

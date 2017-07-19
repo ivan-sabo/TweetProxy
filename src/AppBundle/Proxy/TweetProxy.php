@@ -33,7 +33,7 @@ class TweetProxy
             $lastTweetId = $lastTweetInDb->getId();
         }
 
-        $tweets = $this->twitterService->getTweets($user->getScreenName(), $lastTweetId);
+        $tweets = $this->twitterService->getTweets($user->getScreenName(), $lastTweetId, $count);
         
         /**
          * Store in db new tweets

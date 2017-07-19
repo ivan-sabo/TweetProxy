@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ user.screenName }}'s tweets {% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Tweet text</th>
+        </tr>
+
+        {% for tweet in tweets %}
+            <tr>
+                <th>
+                    {{ loop.index }}
+                </th>
+
+                <th>
+                    {{ tweet.text }}
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

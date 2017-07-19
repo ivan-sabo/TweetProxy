@@ -2,12 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Proxy\TweetProxy;
+use AppBundle\Proxy\UserProxy;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Proxy\UserProxy;
-use AppBundle\Proxy\TweetProxy;
 
 class TwitterController extends Controller
 {
@@ -17,10 +16,8 @@ class TwitterController extends Controller
     public function indexAction(UserProxy $userProxy)
     {
         $users = $userProxy->getUsers();
-        /**
-         * @todo Connect with template
-         */
-        return new Response(json_encode($users));
+        
+        return $this->render('default/index.html.twig', array('users' => $users));
     }
 
     /**
@@ -38,6 +35,6 @@ class TwitterController extends Controller
 
         $tweets = $tweetProxy->getUserLatestTweets($user, $tweetsCount);
 
-        return new Response(json_encode(count($tweets)));
+        return $this->render('default/user.html.twig', array('user' => $user, 'tweets' => $tweets));
     }
 }

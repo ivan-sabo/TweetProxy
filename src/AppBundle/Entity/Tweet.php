@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tweet
 {
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="bigint", options={"unsigned"=true})
      * @ORM\Id
      */
     private $id;

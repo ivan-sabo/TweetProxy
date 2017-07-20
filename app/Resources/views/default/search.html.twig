@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <form action="search" method="post">
+        Query: 
+        <input type="text" name="query"><br>
+
+        User:
+        <select name="screenname">
+            <option value=""></option>
+
+            {% for user in users %}
+                <option value="{{ user.getScreenName() }}">{{ user.getName() }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if tweets is not empty %}
+        <table>
+            <tr>
+                <th>Tweets</th>
+            </tr>
+
+            {% for tweet in tweets %}
+                <tr>
+                    <th>{{ tweet.text }}<\th>
+                </tr>
+            {% endfor %}
+    {% endif %}
+{% endblock %}

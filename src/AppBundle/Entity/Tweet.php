@@ -2,11 +2,12 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tweet")
+ * @ORM\Table(name="tweet", indexes={@ORM\Index(columns={"text"}, flags={"fulltext"})})
  */
 class Tweet
 {

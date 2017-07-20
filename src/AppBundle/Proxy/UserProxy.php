@@ -8,14 +8,30 @@ use Doctrine\ORM\EntityManager;
 
 class UserProxy
 {
+    /**
+     * Entity manager
+     *
+     * @var EntityManager
+     */
     protected $em;
 
+    /**
+     * Constructor method
+     *
+     * @param EntityManager $em
+     * @param TwitterService $twitterService
+     */
     public function __construct(EntityManager $em, TwitterService $twitterService)
     {
         $this->em = $em;
         $this->twitterService = $twitterService;
     }
 
+    /**
+     * get users
+     *
+     * @return User[]
+     */
     public function getUsers()
     {
         $userRepository = $this->em->getRepository(User::class);
@@ -25,6 +41,12 @@ class UserProxy
         return $users;
     }
 
+    /**
+     * get user
+     *
+     * @param string $username
+     * @return User
+     */
     public function getUser($username)
     {
         $userRepository = $this->em->getRepository(User::class);

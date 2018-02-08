@@ -68,8 +68,8 @@ class UserProxy
             $user->setScreenName($twitterUser->screen_name);
             $user->setLocation($twitterUser->location);
 
-            $manager->persist($user);
-            $manager->flush();
+            $this->em->persist($user);
+            $this->em->flush();
         }
 
         return $user;

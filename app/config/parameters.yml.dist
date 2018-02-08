@@ -17,3 +17,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    tweets_number: 10
+    items_per_page: 5
+    api_key: apikey
+    secret_key: secretkey

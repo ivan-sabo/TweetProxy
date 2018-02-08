@@ -27,29 +27,6 @@ class TwitterController extends Controller
     }
 
     /**
-     * @Route("/{username}", name="userTweets", requirements={"username": "\s+"})
-     *
-     * @param UserProxy $userProxy
-     * @param TweetProxy $tweetProxy
-     * @param string $username
-     * @return Response
-     */
-    public function userTweets(UserProxy $userProxy, TweetProxy $tweetProxy, $username)
-    {
-        $tweetsCount = $this->container->getParameter('tweets_number');
-
-        $user = $userProxy->getUser($username);
-        
-        if (empty($user)) {
-            return new Response('There is no user with username:' . $username);
-        }
-
-        $tweets = $tweetProxy->getUserLatestTweets($user, $tweetsCount);
-
-        return $this->render('default/user.html.twig', array('user' => $user, 'tweets' => $tweets));
-    }
-
-    /**
      * @Method({"GET"})
      * @Route("/search", name="getSearchTweets")
      *
@@ -83,5 +60,28 @@ class TwitterController extends Controller
         $users = $userProxy->getUsers();
 
         return $this->render('default/search.html.twig', array('users' => $users, 'tweets' => $tweets));
+    }
+
+    /**
+     * @Route("/{username}", name="userTweets")
+     *
+     * @param UserProxy $userProxy
+     * @param TweetProxy $tweetProxy
+     * @param string $username
+     * @return Response
+     */
+    public function userTweets(UserProxy $userProxy, TweetProxy $tweetProxy, $username)
+    {
+        $tweetsCount = $this->container->getParameter('tweets_number');
+
+        $user = $userProxy->getUser($username);
+        
+        if (empty($user)) {
+            return new Response('There is no user with username:' . $username);
+        }
+
+        $tweets = $tweetProxy->getUserLatestTweets($user, $tweetsCount);
+
+        return $this->render('default/user.html.twig', array('user' => $user, 'tweets' => $tweets));
     }
 }
